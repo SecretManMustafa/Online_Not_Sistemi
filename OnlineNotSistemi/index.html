@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Online Not Sistemi</title>
+<style>
+    body { font-family: Arial, sans-serif; background: #f4f4f9; color: #333; margin: 0; padding: 0; }
+    h1, h2, h3 { text-align: center; }
+    .container { width: 90%; max-width: 900px; margin: 20px auto; padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .hidden { display: none; }
+    label { display: inline-block; width: 120px; font-weight: bold; }
+    input, select { padding: 5px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; width: calc(100% - 130px); }
+    button { padding: 8px 15px; border: none; background: #4CAF50; color: white; border-radius: 5px; cursor: pointer; margin-top: 5px; }
+    button:hover { background: #45a049; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+    th { background-color: #4CAF50; color: white; }
+    tr:nth-child(even){background-color: #f2f2f2;}
+    tr:hover {background-color: #ddd;}
+    .flex-row { display: flex; flex-wrap: wrap; align-items: center; }
+    .flex-row label { width: 100px; margin-right: 10px; }
+    .flex-row input, .flex-row select { flex: 1; }
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>Online Not Sistemi</h1>
+
+<!-- Login -->
+<div id="loginDiv">
+    <div class="flex-row">
+        <label>İsim:</label>
+        <input type="text" id="firstName">
+    </div>
+    <div class="flex-row">
+        <label>Soyisim:</label>
+        <input type="text" id="lastName">
+    </div>
+    <div class="flex-row">
+        <label>Rol:</label>
+        <select id="role">
+            <option value="student">Öğrenci</option>
+            <option value="teacher">Öğretmen</option>
+        </select>
+    </div>
+    <button onclick="login()">Giriş Yap</button>
+</div>
+
+<!-- Öğretmen Paneli -->
+<div id="teacherDiv" class="hidden">
+    <h2>Öğretmen Paneli</h2>
+    <div class="flex-row">
+        <label>Öğrenci Adı:</label>
+        <input type="text" id="studentName">
+    </div>
+    <div class="flex-row">
+        <label>Öğrenci Soyadı:</label>
+        <input type="text" id="studentLastName">
+    </div>
+    <div class="flex-row">
+        <label>Notu:</label>
+        <input type="number" id="studentGrade">
+    </div>
+    <button onclick="addGrade()">Not Ekle</button>
+
+    <h3>Not Listesi</h3>
+    <table id="gradesTable">
+        <tr><th>Öğrenci</th><th>Not</th></tr>
+    </table>
+
+    <button onclick="logout()">Çıkış Yap</button>
+</div>
+
+<!-- Öğrenci Paneli -->
+<div id="studentDiv" class="hidden">
+    <h2>Öğrenci Paneli</h2>
+    <p>Hoşgeldin: <strong id="studentLabel"></strong></p>
+
+    <h3>Notların</h3>
+    <table id="studentGradesTable">
+        <tr><th>Öğrenci</th><th>Not</th></tr>
+    </table>
+
+    <h3>Ders Programın</h3>
+    <table id="scheduleTable">
+        <tr><th>Gün</th><th>Ders Saati</th><th>Ders</th></tr>
+    </table>
+
+    <button onclick="logout()">Çıkış Yap</button>
+</div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
